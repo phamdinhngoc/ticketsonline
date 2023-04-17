@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ticketsonline.Data;
+using ticketsonline.Data.Services;
 
 namespace ticketsonline
 {
@@ -28,6 +29,9 @@ namespace ticketsonline
 
             //DbContext Configuration
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("connectionString")));
+
+            //Services Configuration
+            services.AddScoped<IActorsService, ActorsService>();
 
             services.AddControllersWithViews();
         }
